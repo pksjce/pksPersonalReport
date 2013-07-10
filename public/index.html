@@ -4,6 +4,7 @@
 		</script>			
 		<script src='js/Chart.js' type='text/javascript'>
 		</script>		
+		<link href='http://fonts.googleapis.com/css?family=Permanent+Marker' rel='stylesheet' type='text/css'>
 		<script type='text/javascript'>
 			function getdata(json){
 				var entryList = json.feed.entry;
@@ -48,19 +49,105 @@
 		</script>
 		<script src="http://spreadsheets.google.com/feeds/list/0AhSy96Mi7GFzdEg5Z3ZJWnd5aDYza2sxU2RITFpmY2c/1/public/values?alt=json-in-script&amp;callback=getdata"></script>
 		<script src="http://spreadsheets.google.com/feeds/list/0AhSy96Mi7GFzdHJOZXRvZEs2dlVzbVBlMEJpcHQ5M2c/1/public/values?alt=json-in-script&amp;callback=getgoogledata"></script>		
+		<style>
+			body{
+				background-color: white;
+				font-family:'Permanent Marker';
+			}
+			.header{
+				background-color: #ACD0E5;
+				width:100%;
+				height:50px;
+				color:white;
+				font-size:40px;
+			}
+			.webHistoryHeader{
+				font-size:25px;
+				text-align: center
+			}
+			.healthHistoryHeader{
+				font-size:25px;
+				text-align: center
+			}
+			.frontArrow{
+				font-size:30px;
+				float:right;
+				cursor:pointer;
+			}
+			.backArrow{
+				font-size:30px;
+				float:left;
+				cursor:pointer;
+			}
+		</style>
 
 	</head>
 	<body>
-		<canvas id="myChart" width="400" height="400" style='float:left'></canvas>
-		<canvas id="myGoogleData" width="400" height="400" style='float:left'></canvas>
+		<div class='header'>
+			My Habits
+		</div>
+		<div class='webhistory'>
+			<div class='webHistoryHeader'>
+				<label>
+					Personal WebHistory
+				</label>
+				<div class='frontArrow'>
+					=>
+				</div>
+			</div>
+			<canvas id="myChart" width="600" height="600" style='float:left'></canvas>
+			<canvas id="myGoogleData" width="600" height="600" style='float:left'></canvas>
+
+		</div>
+		<div class='healthhistory'>
+			<div class='healthHistoryHeader'>
+				<div class='backArrow'>
+					<=
+				</div>				
+				<label>
+					Health History
+				</label>
+				<div class='frontArrow'>
+					=>
+				</div>
+			</div>
+			<canvas id="waterChart" width="600" height="600" style='float:left'></canvas>
+			
+
+		</div>		
+		
 		<script type='text/javascript'>
 			$(document).ready(function (){
-/*				$.post("http://spreadsheets.google.com/feeds/list/0AhSy96Mi7GFzdEg5Z3ZJWnd5aDYza2sxU2RITFpmY2c/1/public/values?alt=json-in-script&amp;callback=getdata");*/
+				$('.healthhistory').hide();
 				var ctx = document.getElementById("myChart").getContext("2d");
-				new Chart(ctx).Radar(youtube);
+				var youtubeOptions = {
+					scaleFontFamily:"'Permanent Marker'",
+					pointLabelFontFamily: "'Permanent Marker'",
+					scaleOverride:true,
+					scaleSteps:5,
+					scaleStepWidth:20,
+					scaleStartValue:0
+				}
+				new Chart(ctx).Radar(youtube,youtubeOptions);
 				var ctx = document.getElementById("myGoogleData").getContext("2d");
-				new Chart(ctx).Radar(googledata);
+				var googleDataOptions = {
+					pointLabelFontFamily: "'Permanent Marker'",
+
+				}
+				new Chart(ctx).Radar(googledata, googleDataOptions);
+
 			});
+
+			$('.webHistoryHeader').find('.frontArrow').click(function(e){
+				$('.webhistory').hide('slow');
+				$('.healthhistory').show('slide');
+			})
+			$('.healthHistoryHeader').find('.backArrow').click(function(e){
+				$('.healthhistory').hide('slow');
+				$('.webhistory').show('slow');
+				
+			})
+
 			
 		</script>	
 	</body>
