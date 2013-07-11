@@ -19,8 +19,8 @@
 					numberdata.push(parseInt(entryList[i]['gsx$_cokwr']['$t']))
 				}
 				var dataset = {};
-				dataset.fillColor ="rgba(220,220,220,0.5)";
-				dataset.strokeColor="rgba(220,220,220,1)";
+				dataset.fillColor ="#ACD0E5";
+				dataset.strokeColor="#ACD0E5";
 				dataset.pointColor="rgba(220,220,220,1)";
 				dataset.pointStrokeColor="#fff";
 				dataset.data = numberdata;
@@ -61,14 +61,18 @@
 				height:50px;
 				color:white;
 				font-size:40px;
+				border-radius: 5px;
+				text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.65);				
 			}
 			.webHistoryHeader{
 				font-size:25px;
-				text-align: center
+				text-align: center;
+				opacity:0.7;
 			}
 			.healthHistoryHeader{
 				font-size:25px;
-				text-align: center
+				text-align: center;
+				opacity:0.7;
 			}
 			.frontArrow{
 				font-size:30px;
@@ -96,9 +100,8 @@
 					=>
 				</div>
 			</div>
-			<canvas id="myChart" width="600" height="600" style='float:left'></canvas>
-			<canvas id="myGoogleData" width="600" height="600" style='float:left'></canvas>
-
+			<canvas id="myGoogleData" width="400" height="400" style='float:left'></canvas>
+			<canvas id="myChart" width="600" height="200" style='float:left'></canvas>			
 		</div>
 		<div class='healthhistory'>
 			<div class='healthHistoryHeader'>
@@ -127,9 +130,11 @@
 					scaleOverride:true,
 					scaleSteps:5,
 					scaleStepWidth:20,
-					scaleStartValue:0
+					scaleStartValue:0,
+					scaleOverlay:true,
+					align:'h',
 				}
-				new Chart(ctx).Radar(youtube,youtubeOptions);
+				new Chart(ctx).Bar(youtube,youtubeOptions);
 				var ctx = document.getElementById("myGoogleData").getContext("2d");
 				var googleDataOptions = {
 					pointLabelFontFamily: "'Permanent Marker'",
