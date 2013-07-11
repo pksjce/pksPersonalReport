@@ -91,18 +91,12 @@
 				float:left;
 				cursor:pointer;
 			}
-			.googleChartBorder{				
+			.chartBorder{				
 				height:450px;
 				width:450px;
 				color:white;
 				float:left;
-			}
-			.youtubeChartBorder{				
-				height:250px;
-				width:450px;
-				color:white;
-				float:left;
-			}			
+			}		
 			canvas{
 				margin-left:25px;
 			}
@@ -123,17 +117,17 @@
 				</div>
 			</div>
 			<div class='webHistoryBody'>
-				<div class='googleChartBorder'>
+				<div class='chartBorder'>
 					<div>
 						My google searches
 					</div>
 					<canvas id="myGoogleData" width="400" height="400" style='float:left'></canvas>
 				</div>
-				<div class='youtubeChartBorder'>
+				<div class='chartBorder'>
 					<div>
 						My youtube searches
 					</div>				
-					<canvas id="myChart" width="400" height="200" style='float:left'></canvas>			
+					<canvas id="myChart" width="400" height="200" style='float:left;margin-top:10%'></canvas>			
 				</div>
 			</div>
 		</div>
@@ -182,11 +176,11 @@
 
 			});
 
-			$('.webHistoryHeader').find('.frontArrow').click(function(e){
+			$('.webHistoryHeader .frontArrow').click(function(e){
 				$('.webhistory').hide('slow');
 				$('.healthhistory').show('slide');
 			})
-			$('.healthHistoryHeader').find('.backArrow').click(function(e){
+			$('.healthHistoryHeader .backArrow').click(function(e){
 				$('.healthhistory').hide('slow');
 				$('.webhistory').show('slow');
 				
