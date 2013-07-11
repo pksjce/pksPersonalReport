@@ -52,14 +52,14 @@
 		<script src="http://spreadsheets.google.com/feeds/list/0AhSy96Mi7GFzdHJOZXRvZEs2dlVzbVBlMEJpcHQ5M2c/1/public/values?alt=json-in-script&amp;callback=getgoogledata"></script>		
 		<style>
 			body{
-				background-color: white;
+				background-color: #333333;
 				font-family:'Expletus Sans';
 			}
 			.header{
-				background-color: #ACD0E5;
+				background-color: #EB593C;
 				width:100%;
 				height:50px;
-				color:white;
+				color:#ABDCD6;
 				font-size:40px;
 				border-radius: 5px;
 				text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.65);				
@@ -68,11 +68,13 @@
 				font-size:25px;
 				text-align: center;
 				opacity:0.7;
+				color:white;
 			}
 			.healthHistoryHeader{
 				font-size:25px;
 				text-align: center;
 				opacity:0.7;
+				color:white;
 			}
 			.frontArrow{
 				font-size:30px;
@@ -133,12 +135,13 @@
 					scaleStartValue:0,
 					scaleOverlay:true,
 					align:'h',
+					scaleFontColor:'#FFFCEC'
 				}
 				new Chart(ctx).Bar(youtube,youtubeOptions);
 				var ctx = document.getElementById("myGoogleData").getContext("2d");
 				var googleDataOptions = {
 					pointLabelFontFamily: "'Permanent Marker'",
-
+					scaleFontColor:'#00000'
 				}
 				new Chart(ctx).Radar(googledata, googleDataOptions);
 
